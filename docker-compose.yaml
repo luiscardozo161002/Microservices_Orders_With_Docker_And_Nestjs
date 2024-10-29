@@ -1,78 +1,75 @@
-# Especifica la versión del formato del archivo de composición de Docker
 version: '3.8'
 
 services:
   # Definición del servicio API Gateway
   gateway:
     build:
-      context: ./api-gateway  # Carpeta donde se encuentra el Dockerfile para el gateway
+      context: ./api-gateway  
     ports:
-      - "3000:3000"  # Mapea el puerto 3000 del contenedor al puerto 3000 de la máquina host
+      - "3000:3000"  
     networks:
-      - my_network  # Conecta el servicio a la red interna definida más abajo
+      - my_network 
 
   # Definición del servicio de usuario
   user-service:
     depends_on:
-      - postgres_db  # Este servicio depende de que postgres_db esté en funcionamiento
+      - postgres_db  
     build:
-      context: ./user-service  # Carpeta donde se encuentra el Dockerfile para el servicio de usuarios
+      context: ./user-service  
     environment:
-      # Variables de entorno para la configuración de la conexión a la base de datos
-      DATABASE_HOST: postgres_db  # Nombre del contenedor de la base de datos
-      DATABASE_PORT: 5432  # Puerto de la base de datos
-      DATABASE_USER: postgres  # Usuario de la base de datos
-      DATABASE_PASSWORD: 161002  # Contraseña de la base de datos
-      DATABASE_NAME: micro_auth  # Nombre de la base de datos a la que se conecta
+      DATABASE_HOST: postgres_db  
+      DATABASE_PORT: 5432  
+      DATABASE_USER: postgres  
+      DATABASE_PASSWORD: 161002 
+      DATABASE_NAME: micro_auth  
     networks:
-      - my_network  # Conecta el servicio a la red interna
+      - my_network  
 
   # Definición del servicio de órdenes
   order-service:
     depends_on:
-      - postgres_db  # Este servicio depende de que postgres_db esté en funcionamiento
+      - postgres_db  
     build:
-      context: ./order-service  # Carpeta donde se encuentra el Dockerfile para el servicio de órdenes
+      context: ./order-service  
     environment:
-      DATABASE_HOST: postgres_db  # Nombre del contenedor de la base de datos
-      DATABASE_PORT: 5432  # Puerto de la base de datos
-      DATABASE_USER: postgres  # Usuario de la base de datos
-      DATABASE_PASSWORD: 161002  # Contraseña de la base de datos
-      DATABASE_NAME: micro_order  # Nombre de la base de datos a la que se conecta
+      DATABASE_HOST: postgres_db  
+      DATABASE_PORT: 5432 
+      DATABASE_USER: postgres  
+      DATABASE_PASSWORD: 161002  
+      DATABASE_NAME: micro_order 
     networks:
-      - my_network  # Conecta el servicio a la red interna
+      - my_network  
 
   # Definición del servicio de productos
   product-service:
     depends_on:
-      - postgres_db  # Este servicio depende de que postgres_db esté en funcionamiento
+      - postgres_db  
     build:
-      context: ./product-service  # Carpeta donde se encuentra el Dockerfile para el servicio de productos
+      context: ./product-service  
     environment:
-      DATABASE_HOST: postgres_db  # Nombre del contenedor de la base de datos
-      DATABASE_PORT: 5432  # Puerto de la base de datos
-      DATABASE_USER: postgres  # Usuario de la base de datos
-      DATABASE_PASSWORD: 161002  # Contraseña de la base de datos
-      DATABASE_NAME: micro_product  # Nombre de la base de datos a la que se conecta
+      DATABASE_HOST: postgres_db  
+      DATABASE_PORT: 5432  
+      DATABASE_USER: postgres  
+      DATABASE_PASSWORD: 161002  
+      DATABASE_NAME: micro_product  
     networks:
-      - my_network  # Conecta el servicio a la red interna
+      - my_network  
 
   # Definición del servicio de la base de datos PostgreSQL
   postgres_db:
-    image: postgres:17.0  # Imagen de Docker a utilizar para PostgreSQL
-    container_name: postgres_db  # Nombre del contenedor para facilitar su identificación
-    restart: always  # Reinicia el contenedor automáticamente si se detiene
+    image: postgres:17.0  
+    container_name: postgres_db 
+    restart: always  
     environment:
-      POSTGRES_USER: postgres  # Usuario por defecto de PostgreSQL
-      POSTGRES_PASSWORD: 161002  # Contraseña por defecto de PostgreSQL
+      POSTGRES_USER: postgres  
+      POSTGRES_PASSWORD: 161002  
     ports:
-      - "5432:5432"  # Mapea el puerto 5432 del contenedor al puerto 5432 de la máquina host
+      - "5432:5432" 
     volumes:
-      - ./data:/var/lib/postgresql/data  # Monta un volumen para la persistencia de datos de PostgreSQL
-      - ./init-db:/docker-entrypoint-initdb.d  # Monta un volumen con scripts de inicialización
+      - ./data:/var/lib/postgresql/data 
+      - ./init-db:/docker-entrypoint-initdb.d  
     networks:
-      - my_network  # Conecta el servicio a la red interna
+      - my_network  
 
-# Definición de redes utilizadas por los servicios
 networks:
-  my_network: {}  # Red interna para la comunicación entre contenedores
+  my_network: {}  

@@ -8,21 +8,21 @@ export class ApiGatewayService {
 
   async getUsers() {
     const response = await firstValueFrom(
-      this.httpService.get('http://user-service:3001/users'), // Asegúrate que el nombre sea correcto
+      this.httpService.get('http://user-service:3001/users'), 
     );
     return response.data;
   }
 
   async getProducts() {
     const response = await firstValueFrom(
-      this.httpService.get('http://product-service:3002/products'), // Asegúrate que el nombre sea correcto
+      this.httpService.get('http://product-service:3002/products'), 
     );
     return response.data;
   }
 
   async getOrders() {
     const response = await firstValueFrom(
-      this.httpService.get('http://order-service:3003/orders'), // Asegúrate que el nombre sea correcto
+      this.httpService.get('http://order-service:3003/orders'), 
     );
     return response.data;
   }

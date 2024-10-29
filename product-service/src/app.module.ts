@@ -7,7 +7,7 @@ import { ProductController } from './app.controller';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), // Carga las variables de entorno
+    ConfigModule.forRoot(), 
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: process.env.DB_HOST,
