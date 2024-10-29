@@ -3,6 +3,10 @@
 
 * Tener instalado Docker, puedes descargarlo desde la web oficial: [www.docker.com](https://www.docker.com/products/docker-desktop/)
 
+## Diagramas de Arquitectura 
+
+![IMG-ARQUITECTURA-NESTJS-WIHT-DOCKER](https://i.ibb.co/1R7B712/Untitled-2024-10-28-2228.png)
+
 
 ## Authors
 
