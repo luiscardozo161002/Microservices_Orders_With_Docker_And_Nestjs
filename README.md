@@ -234,8 +234,8 @@ INSERT INTO products (name, description, price, stock) VALUES
 ('Martillo', 'Martillo de Acero del 12', 49.99, 100),
 ('Clavos', '1kg clavos 2 pulgadas', 39.99, 50);
 
-INSERT INTO orders (user_id, product_id, quantity, totalPrice) VALUES
-(1, 1, 2, 49.98),  
+INSERT INTO orders ("userId", "productId", quantity, "totalPrice") VALUES
+(1, 1, 2, 49.98),
 (2, 2, 1, 39.99);
 ```
 
