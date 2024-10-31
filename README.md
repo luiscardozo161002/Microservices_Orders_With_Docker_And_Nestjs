@@ -21,7 +21,7 @@ Abrir docker iniciar sesión, una vez se encuentre corriendo podemos verificar a
 docker --version
 ```
 
-Accedemos al directorio donde esta nuestro repositorio localmente. Accedemos dentro de la carpeta **Nestjs**.
+Accedemos al directorio donde esta nuestro repositorio localmente. Accedemos dentro de la carpeta **Microservices_Orders_With_Docker_And_Nestjs**.
 
 Contruimos las imagenes y contenedores de nuestra aplicación, con el comando: 
 
